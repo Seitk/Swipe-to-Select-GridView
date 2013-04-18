@@ -9,6 +9,9 @@
 #import "ExampleViewController.h"
 
 @interface ExampleViewController ()
+{
+    NSIndexPath *lastAccessed;
+}
 
 @end
 
@@ -69,7 +72,7 @@
     
     UICollectionViewCell *cell = (UICollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"sample.png"]];
+    cell.backgroundColor = [UIColor grayColor];
     
     return cell;
 }
@@ -77,20 +80,19 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.alpha = 0.5;
+    cell.backgroundColor = [UIColor redColor];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.alpha = 1.0;
+    cell.backgroundColor = [UIColor grayColor];
 }
 
 - (void) resetSelectedCells
 {
     for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
-        [self.collectionView deselectItemAtIndexPath:[self.collectionView indexPathForCell:cell] animated:YES];
-        [self collectionView:self.collectionView didDeselectItemAtIndexPath:[self.collectionView indexPathForCell:cell]];
+        [self deselectCellForCollectionView:self.collectionView atIndexPath:[self.collectionView indexPathForCell:cell]];
     }
 }
 
@@ -107,11 +109,31 @@
         
         if (pointerX >= cellSX && pointerX <= cellEX && pointerY >= cellSY && pointerY <= cellEY)
         {
-            [self.collectionView selectItemAtIndexPath:[self.collectionView indexPathForCell:cell] animated:YES scrollPosition:UICollectionViewScrollPositionNone];
-            [self collectionView:self.collectionView didSelectItemAtIndexPath:[self.collectionView indexPathForCell:cell]];
+            NSIndexPath *touchOver = [self.collectionView indexPathForCell:cell];
+            
+            if (lastAccessed != touchOver)
+            {
+                if (cell.selected)
+                 [self deselectCellForCollectionView:self.collectionView atIndexPath:touchOver];
+                else
+                [self selectCellForCollectionView:self.collectionView atIndexPath:touchOver];
+            }
+
+            lastAccessed = touchOver;
         }
     }
 }
 
+- (void) selectCellForCollectionView:(UICollectionView *)collection atIndexPath:(NSIndexPath *)indexPath
+{
+    [collection selectItemAtIndexPath:indexPath animated:YES scrollPosition:UICollectionViewScrollPositionNone];
+    [self collectionView:collection didSelectItemAtIndexPath:indexPath];
+}
+
+- (void) deselectCellForCollectionView:(UICollectionView *)collection atIndexPath:(NSIndexPath *)indexPath
+{
+    [collection deselectItemAtIndexPath:indexPath animated:YES];
+    [self collectionView:collection didDeselectItemAtIndexPath:indexPath];
+}
 
 @end
