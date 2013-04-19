@@ -8,7 +8,7 @@
 
 #import "ExampleViewController.h"
 #define selectedTag 100
-#define cellSize 70
+#define cellSize 72
 #define textLabelHeight 20
 #define cellAAcitve 1.0
 #define cellADeactive 0.3
@@ -151,6 +151,11 @@
 
             lastAccessed = touchOver;
         }
+    }
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
+    {
+        lastAccessed = nil;
     }
 }
 

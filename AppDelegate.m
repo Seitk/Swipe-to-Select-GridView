@@ -19,7 +19,8 @@
     ExampleViewController *exampleViewController = [[ExampleViewController alloc] initWithNibName:@"ExampleViewController" bundle:nil];
     
     UINavigationController *newNC = [[UINavigationController alloc] initWithRootViewController:exampleViewController];
-        
+    newNC.navigationBar.tintColor = [UIColor blackColor];
+    
     self.window.rootViewController = newNC;
     [self.window makeKeyAndVisible];
     return YES;
