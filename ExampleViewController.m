@@ -7,6 +7,13 @@
 //
 
 #import "ExampleViewController.h"
+#define selectedTag 100
+#define cellSize 70
+#define textLabelHeight 20
+#define cellAAcitve 1.0
+#define cellADeactive 0.3
+#define cellAHidden 0.0
+#define defaultFontSize 9.0
 
 @interface ExampleViewController ()
 {
@@ -55,7 +62,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 30;
+    return 20;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -72,21 +79,44 @@
     
     UICollectionViewCell *cell = (UICollectionViewCell *)[collectionView dequeueReusableCellWithReuseIdentifier:identifier forIndexPath:indexPath];
     
-    cell.backgroundColor = [UIColor grayColor];
+    if (![cell viewWithTag:selectedTag])
+    {
+        UILabel *selected = [[UILabel alloc] initWithFrame:CGRectMake(0, cellSize - textLabelHeight, cellSize, textLabelHeight)];
+        selected.backgroundColor = [UIColor darkGrayColor];
+        selected.textColor = [UIColor whiteColor];
+        selected.text = @"SELECTED";
+        selected.textAlignment = NSTextAlignmentCenter;
+        selected.font = [UIFont systemFontOfSize:defaultFontSize];
+        selected.tag = selectedTag;
+        selected.alpha = cellAHidden;
+        
+        [cell.contentView addSubview:selected];        
+    }
+    
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", [indexPath row]]]];
+    
+    cell.backgroundView.alpha = cellADeactive;
     
     return cell;
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
+{
+    return CGSizeMake(cellSize, cellSize);
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor redColor];
+    cell.backgroundView.alpha = cellAAcitve;
+    [cell viewWithTag:selectedTag].alpha = cellAAcitve;
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundColor = [UIColor grayColor];
+    cell.backgroundView.alpha = cellADeactive;
+    [cell viewWithTag:selectedTag].alpha = cellAHidden;
 }
 
 - (void) resetSelectedCells
