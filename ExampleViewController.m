@@ -13,7 +13,7 @@
 #define cellAAcitve 1.0
 #define cellADeactive 0.3
 #define cellAHidden 0.0
-#define defaultFontSize 9.0
+#define defaultFontSize 10.0
 
 @interface ExampleViewController ()
 {
