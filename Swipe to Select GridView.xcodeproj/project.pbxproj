@@ -18,6 +18,8 @@
 		9B8EBC6E171FD73D000F2ABA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B8EBC6D171FD73D000F2ABA /* Default-568h@2x.png */; };
 		9B8EBC85171FE5D8000F2ABA /* ExampleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9B8EBC83171FE5D8000F2ABA /* ExampleViewController.m */; };
 		9B8EBC86171FE5D8000F2ABA /* ExampleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9B8EBC84171FE5D8000F2ABA /* ExampleViewController.xib */; };
+		9BA9979E17251C2B00E23AD7 /* Swipe to Select GridView-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9BA9979C17251C2B00E23AD7 /* Swipe to Select GridView-Info.plist */; };
+		9BA997A217251D5300E23AD7 /* UIView+Positioning.m in Sources */ = {isa = PBXBuildFile; fileRef = 9BA997A117251D5300E23AD7 /* UIView+Positioning.m */; };
 		9BC5D3791720EAFE00A5883D /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC5D36F1720EAFE00A5883D /* 0.png */; };
 		9BC5D37A1720EAFE00A5883D /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC5D3701720EAFE00A5883D /* 1.png */; };
 		9BC5D37B1720EAFE00A5883D /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BC5D3711720EAFE00A5883D /* 2.png */; };
@@ -45,10 +47,8 @@
 		9B8EBC57171FD73D000F2ABA /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		9B8EBC59171FD73D000F2ABA /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		9B8EBC5B171FD73D000F2ABA /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		9B8EBC5F171FD73D000F2ABA /* Swipe to Select GridView-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Swipe to Select GridView-Info.plist"; sourceTree = "<group>"; };
 		9B8EBC61171FD73D000F2ABA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		9B8EBC63171FD73D000F2ABA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		9B8EBC65171FD73D000F2ABA /* Swipe to Select GridView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Swipe to Select GridView-Prefix.pch"; sourceTree = "<group>"; };
 		9B8EBC66171FD73D000F2ABA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		9B8EBC67171FD73D000F2ABA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		9B8EBC69171FD73D000F2ABA /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
@@ -57,6 +57,10 @@
 		9B8EBC82171FE5D8000F2ABA /* ExampleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExampleViewController.h; sourceTree = "<group>"; };
 		9B8EBC83171FE5D8000F2ABA /* ExampleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExampleViewController.m; sourceTree = "<group>"; };
 		9B8EBC84171FE5D8000F2ABA /* ExampleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ExampleViewController.xib; sourceTree = "<group>"; };
+		9BA9979C17251C2B00E23AD7 /* Swipe to Select GridView-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "Swipe to Select GridView-Info.plist"; sourceTree = "<group>"; };
+		9BA9979D17251C2B00E23AD7 /* Swipe to Select GridView-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Swipe to Select GridView-Prefix.pch"; sourceTree = "<group>"; };
+		9BA997A017251D5300E23AD7 /* UIView+Positioning.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Positioning.h"; sourceTree = "<group>"; };
+		9BA997A117251D5300E23AD7 /* UIView+Positioning.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Positioning.m"; sourceTree = "<group>"; };
 		9BC5D36F1720EAFE00A5883D /* 0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 0.png; sourceTree = "<group>"; };
 		9BC5D3701720EAFE00A5883D /* 1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 1.png; sourceTree = "<group>"; };
 		9BC5D3711720EAFE00A5883D /* 2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 2.png; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 				9B8EBC82171FE5D8000F2ABA /* ExampleViewController.h */,
 				9B8EBC83171FE5D8000F2ABA /* ExampleViewController.m */,
 				9B8EBC84171FE5D8000F2ABA /* ExampleViewController.xib */,
+				9BA9979F17251D5300E23AD7 /* Classes */,
 				9B8EBC5E171FD73D000F2ABA /* Supporting Files */,
 				9B8EBC7F171FE1B9000F2ABA /* resources */,
 			);
@@ -137,10 +142,10 @@
 		9B8EBC5E171FD73D000F2ABA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				9B8EBC5F171FD73D000F2ABA /* Swipe to Select GridView-Info.plist */,
+				9BA9979C17251C2B00E23AD7 /* Swipe to Select GridView-Info.plist */,
+				9BA9979D17251C2B00E23AD7 /* Swipe to Select GridView-Prefix.pch */,
 				9B8EBC60171FD73D000F2ABA /* InfoPlist.strings */,
 				9B8EBC63171FD73D000F2ABA /* main.m */,
-				9B8EBC65171FD73D000F2ABA /* Swipe to Select GridView-Prefix.pch */,
 				9B8EBC69171FD73D000F2ABA /* Default.png */,
 				9B8EBC6B171FD73D000F2ABA /* Default@2x.png */,
 				9B8EBC6D171FD73D000F2ABA /* Default-568h@2x.png */,
@@ -154,6 +159,15 @@
 				9BC5D36E1720EAFE00A5883D /* userimages */,
 			);
 			path = resources;
+			sourceTree = "<group>";
+		};
+		9BA9979F17251D5300E23AD7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9BA997A017251D5300E23AD7 /* UIView+Positioning.h */,
+				9BA997A117251D5300E23AD7 /* UIView+Positioning.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		9BC5D36E1720EAFE00A5883D /* userimages */ = {
@@ -259,6 +273,7 @@
 				9BC5D3991720F31600A5883D /* 17.png in Resources */,
 				9BC5D39A1720F31600A5883D /* 18.png in Resources */,
 				9BC5D39B1720F31600A5883D /* 19.png in Resources */,
+				9BA9979E17251C2B00E23AD7 /* Swipe to Select GridView-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -272,6 +287,7 @@
 				9B8EBC64171FD73D000F2ABA /* main.m in Sources */,
 				9B8EBC68171FD73D000F2ABA /* AppDelegate.m in Sources */,
 				9B8EBC85171FE5D8000F2ABA /* ExampleViewController.m in Sources */,
+				9BA997A217251D5300E23AD7 /* UIView+Positioning.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

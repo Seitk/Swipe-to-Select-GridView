@@ -7,6 +7,8 @@
 //
 
 #import "ExampleViewController.h"
+#import "UIView+Positioning.h"
+
 #define selectedTag 100
 #define cellSize 72
 #define textLabelHeight 20
@@ -14,6 +16,8 @@
 #define cellADeactive 0.3
 #define cellAHidden 0.0
 #define defaultFontSize 10.0
+
+#define numOfimg 20
 
 @interface ExampleViewController ()
 {
@@ -44,7 +48,7 @@
     self.navigationItem.rightBarButtonItem = btnReset;
     
     UIPanGestureRecognizer *gestureRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(handleGesture:)];
-    [self.collectionView addGestureRecognizer:gestureRecognizer];
+    [self.view addGestureRecognizer:gestureRecognizer];
     [gestureRecognizer setMinimumNumberOfTouches:1];
     [gestureRecognizer setMaximumNumberOfTouches:1];
 }
@@ -62,7 +66,7 @@
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    return 20;
+    return numOfimg * 4;
 }
 
 - (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath
@@ -90,10 +94,13 @@
         selected.tag = selectedTag;
         selected.alpha = cellAHidden;
         
-        [cell.contentView addSubview:selected];        
+        [cell.contentView addSubview:selected];
     }
     
-    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", [indexPath row]]]];
+    cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", [indexPath row] % numOfimg]]];
+    [[cell viewWithTag:selectedTag] setAlpha:cellAHidden];
+    
+    // You supposed to highlight the selected cell in here;
     
     cell.backgroundView.alpha = cellADeactive;
     
@@ -127,10 +134,10 @@
 }
 
 - (void) handleGesture:(UIPanGestureRecognizer *)gestureRecognizer
-{
-    float pointerX = [gestureRecognizer locationInView:gestureRecognizer.view].x;
-    float pointerY = [gestureRecognizer locationInView:gestureRecognizer.view].y;
-    
+{    
+    float pointerX = [gestureRecognizer locationInView:self.collectionView].x;
+    float pointerY = [gestureRecognizer locationInView:self.collectionView].y;
+
     for (UICollectionViewCell *cell in self.collectionView.visibleCells) {
         float cellSX = cell.frame.origin.x;
         float cellEX = cell.frame.origin.x + cell.frame.size.width;
@@ -144,11 +151,11 @@
             if (lastAccessed != touchOver)
             {
                 if (cell.selected)
-                 [self deselectCellForCollectionView:self.collectionView atIndexPath:touchOver];
+                    [self deselectCellForCollectionView:self.collectionView atIndexPath:touchOver];
                 else
-                [self selectCellForCollectionView:self.collectionView atIndexPath:touchOver];
+                    [self selectCellForCollectionView:self.collectionView atIndexPath:touchOver];
             }
-
+            
             lastAccessed = touchOver;
         }
     }
@@ -156,7 +163,10 @@
     if (gestureRecognizer.state == UIGestureRecognizerStateEnded)
     {
         lastAccessed = nil;
+        self.collectionView.scrollEnabled = YES;
     }
+    
+    
 }
 
 - (void) selectCellForCollectionView:(UICollectionView *)collection atIndexPath:(NSIndexPath *)indexPath

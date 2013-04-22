@@ -9,5 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @interface ExampleViewController : UICollectionViewController
+{
+    CGPoint dragStartPt;
+    bool dragging;
+}
 
 @end
