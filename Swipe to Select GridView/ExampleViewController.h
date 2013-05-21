@@ -12,6 +12,8 @@
 {
     CGPoint dragStartPt;
     bool dragging;
+    
+    NSMutableDictionary *selectedIdx;
 }
 
 @end

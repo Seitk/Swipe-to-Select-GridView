@@ -41,6 +41,8 @@
 {
     [super viewDidLoad];
     
+    selectedIdx = [[NSMutableDictionary alloc] init];
+    
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"Cell"];
     [self.collectionView setAllowsMultipleSelection:YES];
     
@@ -99,10 +101,11 @@
     
     cell.backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%d.png", [indexPath row] % numOfimg]]];
     [[cell viewWithTag:selectedTag] setAlpha:cellAHidden];
-    
-    // You supposed to highlight the selected cell in here;
-    
     cell.backgroundView.alpha = cellADeactive;
+    
+    // You supposed to highlight the selected cell in here; This is an example
+    bool cellSelected = [selectedIdx objectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
+    [self setCellSelection:cell selected:cellSelected];
     
     return cell;
 }
@@ -115,15 +118,23 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundView.alpha = cellAAcitve;
-    [cell viewWithTag:selectedTag].alpha = cellAAcitve;
+    [self setCellSelection:cell selected:YES];
+    
+    [selectedIdx setValue:@"1" forKey:[NSString stringWithFormat:@"%d", indexPath.row]];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewCell *cell = [collectionView cellForItemAtIndexPath:indexPath];
-    cell.backgroundView.alpha = cellADeactive;
-    [cell viewWithTag:selectedTag].alpha = cellAHidden;
+    [self setCellSelection:cell selected:NO];
+    
+    [selectedIdx removeObjectForKey:[NSString stringWithFormat:@"%d", indexPath.row]];
+}
+
+- (void) setCellSelection:(UICollectionViewCell *)cell selected:(bool)selected
+{
+    cell.backgroundView.alpha = selected ? cellAAcitve : cellADeactive;
+    [cell viewWithTag:selectedTag].alpha = selected ? cellAAcitve : cellAHidden;
 }
 
 - (void) resetSelectedCells
